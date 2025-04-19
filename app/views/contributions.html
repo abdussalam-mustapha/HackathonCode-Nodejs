@@ -1,0 +1,292 @@
+
+
+<style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --success-color: #2ecc71;
+        --warning-color: #f1c40f;
+        --danger-color: #e74c3c;
+        --info-color: #3498db;
+        --text-color: #2c3e50;
+        --light-bg: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+    }
+
+    .alert {
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: var(--box-shadow);
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, var(--success-color), #27ae60);
+        color: white;
+    }
+
+    .alert-danger {
+        background: linear-gradient(135deg, var(--danger-color), #c0392b);
+        color: white;
+    }
+
+    .alert .close {
+        color: white;
+        opacity: 0.8;
+        text-shadow: none;
+    }
+
+    .alert .close:hover {
+        opacity: 1;
+    }
+
+    .panel {
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+        margin-bottom: 25px;
+    }
+
+    .panel:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .panel-heading {
+        border: none;
+        padding: 25px;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .panel-info .panel-heading {
+        background: linear-gradient(135deg, var(--info-color), #2980b9);
+        color: white;
+    }
+
+    .panel-default .panel-heading {
+        background: linear-gradient(135deg, var(--light-bg), #e9ecef);
+        color: var(--text-color);
+    }
+
+    .panel-title {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .panel-body {
+        padding: 25px;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #ddd;
+        padding: 15px;
+    }
+
+    .table thead th {
+        background-color: var(--light-bg);
+        color: var(--text-color);
+        font-weight: 600;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(52, 152, 219, 0.05);
+    }
+
+    input[type="text"] {
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        padding: 8px 12px;
+        width: 80px;
+        transition: var(--transition);
+    }
+
+    input[type="text"]:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        outline: none;
+    }
+
+    .btn-default {
+        background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 12px 30px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: var(--transition);
+    }
+
+    .btn-default:hover {
+        background: linear-gradient(135deg, #2980b9, var(--secondary-color));
+        transform: translateY(-2px);
+    }
+
+    .normalText {
+        margin: 15px 0;
+        padding-left: 20px;
+    }
+
+    .normalText li {
+        margin-bottom: 10px;
+    }
+
+    strong {
+        color: var(--text-color);
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .table-responsive {
+            border-radius: var(--border-radius);
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: 60px;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                  
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- {% endif %} {% if updateError %} -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-percent"></i> This screen allows you to change the
+                    <strong>payroll percentages</strong> deducted from your paycheck for each
+                    <strong>contribution type</strong>.
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <form method="POST" action="/contributions.html">
+                        <table class="table table-bordered table-hover tablesorter">
+                            <thead>
+                                <tr>
+                                    <th>Contribution Type</th>
+                                    <th>Payroll Contribution Percent
+                                        <br>(per pay period)
+                                    </th>
+                                    <th>New Payroll Contribution Percent
+                                        <br>(per pay period)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="fa fa-money"></i> Employee Pre-Tax</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" name="preTax" value="0">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td>
+                                        <input type="text" name="roth" value="0">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa fa-credit-card"></i> Employee After Tax</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" name="afterTax" value="0">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Fix for A8 - CSRF -->
+                        <!--
+                        <input type="hidden" name="_csrf" value="{{csrftoken}}"></input>
+                        -->
+                        <button type="submit" class="btn btn-default">
+                            <i class="fa fa-check"></i> Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong><i class="fa fa-info-circle"></i> Reminder:</strong>
+            </div>
+            <div class="panel-body">
+                <p>All transactions are subject to plan provisions.</p>
+                <a name="Instructions"></a>
+                <p>
+                    <strong>Instructions:</strong>
+                </p>
+                <ol class="normalText">
+                    <li>Choose a new payroll contribution.</li>
+                    <li>Click the Submit button.</li>
+                </ol>
+                <p>
+                    <strong>Need Help?</strong>
+                </p>
+                <p>If you think you made a mistake or you need more information about this transaction, contact the Retirement Service Center
+                    <br>at
+                    <span style="white-space:nowrap;">1-888-888-8888</span>.</p>
+            </div>
+        </div>
+    </div>
+</div>

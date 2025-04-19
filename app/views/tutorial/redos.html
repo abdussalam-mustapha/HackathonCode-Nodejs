@@ -1,0 +1,176 @@
+
+
+<style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --success-color: #2ecc71;
+        --warning-color: #f1c40f;
+        --danger-color: #e74c3c;
+        --info-color: #3498db;
+        --text-color: #2c3e50;
+        --light-bg: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+    }
+
+    .panel {
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 25px;
+        transition: var(--transition);
+    }
+
+    .panel:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .panel-info {
+        background: white;
+    }
+
+    .panel-heading {
+        background: linear-gradient(135deg, var(--info-color), #2980b9);
+        color: white;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        padding: 15px 20px;
+    }
+
+    .panel-title {
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .panel-body {
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    .panel-body p {
+        margin-bottom: 15px;
+    }
+
+    a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: var(--transition);
+        border-bottom: 1px dashed var(--secondary-color);
+    }
+
+    a:hover {
+        color: var(--primary-color);
+        border-bottom: 1px solid var(--primary-color);
+    }
+
+    ol {
+        padding-left: 20px;
+        margin: 15px 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        position: relative;
+    }
+
+    pre {
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        line-height: 1.4;
+    }
+
+    code {
+        background: rgba(52, 152, 219, 0.1);
+        color: var(--secondary-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .panel-body {
+            padding: 15px;
+        }
+
+        pre {
+            font-size: 0.9em;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Description</h3>
+            </div>
+            <div class="panel-body">
+                The Regular expression Denial of Service (<a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS">ReDoS</a>) is a Denial of Service attack, that exploits the fact that most Regular Expression implementations may reach extreme situations that cause them to work very slowly (exponentially related to input size). An attacker can then cause a program using a Regular Expression to enter these extreme situations and then hang for a very long time.
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Attack Mechanics</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    When untrusted data input is executed on a regex pattern, it may exploit vulnerable patterns into running long calculations to match for a given string. For Node.js this is extremely important due to the single-threaded event-loop architecture which means that the main Node.js process is blocked from serving any other requests.
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">How Do I Prevent It?</h3>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li>
+                        Avoid writing your own regular expressions
+                    </li>
+                    <li>
+                        Use Node.js's <a href="https://github.com/chriso/validator.js/">validator.js</a> package to validate expected data format instead of writing your own regular expressions
+                    </li>
+                    <li>
+                        As a last resort of writing your own regex patterns you can utilize Node.js's
+                        <a href="https://github.com/substack/safe-regex">safe-regex</a> package which allows detecting if a regex is prone to catastrophic backtracking, and also allows to configure threshold for maximum repetitions.
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Source Code Example</h3>
+        </div>
+        <div class="panel-body">
+            <p>
+                Even simple regex patterns are vulnerable to ReDoS. The NodeGoat project uses the following source code to validate text format from the user based on a regex pattern:
+
+                <pre>
+// Allow only numbers with a suffix of #, for example: 'XXXXXX#'
+var regexPattern = /([0-9]+)+\#/;
+var testComplyWithRequirements = regexPattern.test(bankRouting)
+                </pre> If a long enough input is provided it will stall the Node.js process and render it useless (in the background the Node.js process will take 100% cpu until stopped or the regex yields a result (true or false)). Try to input the following string in the Bank Routing number in the Profile form:
+                <pre>
+91762612117612121123123123123121
+                </pre>
+
+            </p>
+        </div>
+    </div>
+</div>
+</div>

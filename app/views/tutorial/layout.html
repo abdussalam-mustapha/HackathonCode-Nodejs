@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tutorial - OWASP Node Goat Project</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="../vendor/theme/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/theme/font-awesome/css/font-awesome.min.css">
+    <!--[if lt IE 9]><script src="../vendor/html5shiv.js"><![endif]-->
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+            --warning-color: #f1c40f;
+            --danger-color: #e74c3c;
+            --info-color: #3498db;
+            --text-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #wrapper {
+            padding-top: 0;
+        }
+
+        .navbar-inverse {
+            background: linear-gradient(135deg, var(--primary-color), #34495e);
+            border: none;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 600;
+            padding: 15px 20px;
+            transition: var(--transition);
+        }
+
+        .navbar-brand:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .navbar-toggle {
+            border: none;
+            margin: 8px 15px;
+        }
+
+        .navbar-toggle .icon-bar {
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .navbar-toggle:hover .icon-bar {
+            background-color: var(--secondary-color);
+        }
+
+        .side-nav {
+            background: white;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+        }
+
+        .side-nav li a {
+            color: var(--text-color);
+            padding: 15px 20px;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .side-nav li a:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary-color);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .side-nav li a i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .side-nav li.active a {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary-color);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .navbar-user {
+            margin-right: 20px;
+        }
+
+        .navbar-user li a {
+            color: white;
+            transition: var(--transition);
+        }
+
+        .navbar-user li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .navbar-user li a i {
+            margin-right: 5px;
+        }
+
+        #page-wrapper {
+            padding: 20px;
+            background: var(--light-bg);
+        }
+
+        .navbar-ex1-collapse {
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-header {
+                padding: 10px;
+            }
+
+            .navbar-brand {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .side-nav {
+                margin: 10px 0;
+            }
+
+            .side-nav li a {
+                padding: 10px 15px;
+            }
+
+            #page-wrapper {
+                padding: 10px;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/tutorial"><b>OWASP Node Goat Tutorial:</b> Fixing OWASP Top 10 </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li><a href="../../views/tutorial/a1.html"><i class="fa fa-wrench"></i> A1 Injection</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a2.html"><i class="fa fa-wrench"></i> A2 Broken Auth</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a3.html"><i class="fa fa-wrench"></i> A3 XSS</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a4.html"><i class="fa fa-wrench"></i> A4 Insecure DOR</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a5.html"><i class="fa fa-wrench"></i> A5 Misconfig</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a6.html"><i class="fa fa-wrench"></i> A6 Sensitive Data</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a7.html"><i class="fa fa-wrench"></i> A7 Access Controls</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a8.html"><i class="fa fa-wrench"></i> A8 CSRF</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a9.html"><i class="fa fa-wrench"></i> A9 Insecure Components</a>
+                    </li>
+                    <li><a href="../../views/tutorial/a10.html"><i class="fa fa-wrench"></i> A10 Redirects</a>
+                    </li>
+                    <li><a href="../../views/tutorial/redos.html"><i class="fa"></i> ReDoS Attacks</a>
+                    </li>
+                    <li><a href="../../views/tutorial/ssrf.html"><i class="fa"></i> SSRF</a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li><a href="/login"><i class="fa fa-power-off"></i> Exit</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>
+                    </h1>
+                </div>
+            </div>
+ 
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="../vendor/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/bootstrap.js"></script>
+    <!-- Load environmental scripts such as live reload -->
+
+
+</body>
+
+</html>

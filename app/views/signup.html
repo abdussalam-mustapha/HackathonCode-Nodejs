@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OWASP NodeGoat Project: Sign Up">
+    <meta name="version" content="v1.2">
+
+    <title>OWASP Node.js Goat Project - Sign Up</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="/vendor/theme/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/theme/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #wrapper {
+            padding-left: 0;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 600;
+            font-size: 1.5em;
+        }
+
+        .panel {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .panel-heading {
+            background-color: transparent !important;
+            border: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .panel-heading h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .panel-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-control {
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            padding: 12px;
+            height: auto;
+            transition: var(--transition);
+            width: 100%;
+            display: block;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+
+        .btn-primary {
+            border-radius: var(--border-radius);
+            padding: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+            width: 50%;
+            display: block;
+            margin: 20px auto 0;
+            height: auto;
+            font-size: 1em;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            border-radius: var(--border-radius);
+            border: none;
+            padding: 15px 20px;
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .alert p {
+            margin: 0;
+        }
+
+        .well {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: none;
+        }
+
+        .well a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .well a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: block;
+            text-align: left;
+        }
+
+        label i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">OWASP Node Goat Project</a>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="well well-sm">
+                        Already a user? <a href="/login.html">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="">
+                        <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+                        <!-- <p>{{userNameError}}{{firstNameError}}{{lastNameError}}{{passwordError}}{{verifyError}}{{emailError}}</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Enter sign up information</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form method="post" role="form" method="post">
+                                <div class="form-group">
+                                    <label for="userName">
+                                        <i class="fa fa-user"></i>User Name
+                                    </label>
+                                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter user name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="firstName">
+                                        <i class="fa fa-user"></i>First Name
+                                    </label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lastName">
+                                        <i class="fa fa-user"></i>Last Name
+                                    </label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">
+                                        <i class="fa fa-lock"></i>Password
+                                    </label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="verify">
+                                        <i class="fa fa-lock"></i>Verify Password
+                                    </label>
+                                    <input type="password" class="form-control" id="verify" name="verify" placeholder="Enter password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">
+                                        <i class="fa fa-envelope"></i>Email (Optional)
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                                </div>
+
+                                <input type="hidden" name="_csrf">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.js"></script>
+    <!-- Load environmental scripts such as live reload -->
+
+</body>
+
+</html>

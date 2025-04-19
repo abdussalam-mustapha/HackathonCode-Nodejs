@@ -1,0 +1,208 @@
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-filter"></i> Filter Assets based on Stock Performance
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <form action="/allocations/{{userId}}" method="get" role="search" class="filter-form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-percent"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Stocks Threshold" name="threshold" />
+                        </div>
+                        <p class="help-block">
+                            <i class="fa fa-info-circle"></i> Using above threshold value, it will return all assets allocation above the specified stocks percentage number.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i> Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        
+        <div class="panel panel-info allocation-card">
+            <div class="panel-heading">
+                <strong>
+                    <i class="fa fa-pie-chart"></i> Asset Allocations for John Doe
+                </strong>
+            </div>
+            <div class="panel-body">
+                <div class="allocation-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon stocks">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Domestic Stocks</span>
+                            <span class="stat-value">%</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon funds">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Funds</span>
+                            <span class="stat-value">%</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon bonds">
+                            <i class="fa fa-certificate"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Bonds</span>
+                            <span class="stat-value">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .filter-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+
+    .input-group-addon {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+
+    .help-block {
+        color: #666;
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+
+    .help-block i {
+        color: var(--secondary-color);
+        margin-right: 5px;
+    }
+
+    .allocation-card {
+        margin-bottom: 30px;
+        transition: var(--transition);
+    }
+
+    .allocation-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .allocation-stats {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        background: white;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        min-width: 200px;
+        transition: var(--transition);
+    }
+
+    .stat-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: white;
+    }
+
+    .stat-icon.stocks {
+        background-color: #2ecc71;
+    }
+
+    .stat-icon.funds {
+        background-color: #3498db;
+    }
+
+    .stat-icon.bonds {
+        background-color: #9b59b6;
+    }
+
+    .stat-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-label {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        font-size: 1.5em;
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+
+    .panel {
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+
+    .panel-heading {
+        background-color: var(--primary-color) !important;
+        color: white;
+        border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+        padding: 15px;
+    }
+
+    .panel-heading i {
+        margin-right: 8px;
+    }
+
+    .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+    }
+
+    .btn-primary i {
+        margin-right: 8px;
+    }
+</style>
+
